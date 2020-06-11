@@ -1,6 +1,8 @@
 package com.example.besalarm;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,6 +70,11 @@ public class AlarmAdapter extends BaseAdapter {
                     MainActivity.database.queryData("UPDATE "+DATABASE.NAME_TABLE+" SET isActive = '"+1+"' WHERE Id = '"+clocks.get(i).getDatabaseId()+"' ");
                 }else {
                     MainActivity.database.queryData("UPDATE "+DATABASE.NAME_TABLE+" SET isActive = '"+0+"' WHERE Id = '"+clocks.get(i).getDatabaseId()+"' ");
+                    Intent intent = new Intent("com.example.besalarm.action.WAKE_UP");
+                    intent.setPackage("com.example.besalarm");
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(mainActivity,clocks.get(i).getDatabaseId(),intent,0);
+                    AlarmManager alarmManager = (AlarmManager) mainActivity.getSystemService(mainActivity.ALARM_SERVICE);
+                    alarmManager.cancel(pendingIntent);
                 }
                 MainActivity.resetList();
             }
