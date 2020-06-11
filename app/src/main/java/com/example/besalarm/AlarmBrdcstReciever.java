@@ -6,11 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
-import android.os.CountDownTimer;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;

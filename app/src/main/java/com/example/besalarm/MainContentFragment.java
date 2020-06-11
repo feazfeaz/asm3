@@ -42,7 +42,11 @@ public class MainContentFragment extends Fragment{
 
         Intent intent = new Intent("com.example.besalarm.action.GOT_NEW_ALARM");
         intent.setPackage("com.example.besalarm");
-        getContext().sendBroadcast(intent);
+//        getContext().sendBroadcast(intent);
+        // sau 10s reciever phải dc nhận dù app có bị kill hay không!
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(),-1,intent,0 );
+        AlarmManager alarmManager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis()+10000,pendingIntent);
 
         return fragment;
     }

@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 //    public static final String IS_ACTIVE_MONDAY_ = "ID";
 
     private MainContentFragment mainContentFragment = new MainContentFragment();
-    private AlarmBrdcstReciever alarmBrdcstReciever;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -87,9 +86,6 @@ public class MainActivity extends AppCompatActivity {
 //                +0+" ";
 //        database.queryData("INSERT INTO "+DATABASE.NAME_TABLE+" VALUES( "+stringResult+" )")
 //        database.queryData("DELETE FROM " + DATABASE.NAME_TABLE);
-        alarmBrdcstReciever = new AlarmBrdcstReciever();
-        IntentFilter intentFilter = new IntentFilter("com.example.basalarm.action.GOT_NEW_ALARM");
-        registerReceiver(alarmBrdcstReciever,intentFilter);
 
         showDetailAlarmInDatabase(this);
     }
@@ -211,6 +207,5 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         Log.e(TAG, "onDestroy: ");
-        unregisterReceiver(alarmBrdcstReciever);
     }
 }
