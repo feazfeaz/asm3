@@ -22,19 +22,41 @@ public class AlertBrdcstReciever extends BroadcastReceiver {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, Intent parintent) {
         Log.e(TAG, "onReceive: " + MainActivity.fullSimpleDateFormat.format(Calendar.getInstance().getTime()));
-
-        recieverSendNotify(context);
-        ringRingtone(context);
+        if (parintent.getBooleanExtra("HAVE_ALARM_TODAY",false)) {
+            // gửi thông báo
+            recieverSendNotify(context,parintent);
+            // bật nhạc chuông
+            ringRingtone(context);
+            new CountDownTimer(3000,3000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                }
+                @Override
+                public void onFinish() {
+                    // hết nhạc chuông - sau 3s cập nhật mới lại đồng hồ
+                    Intent intent = new Intent("com.example.besalarm.action.GOT_NEW_ALARM");
+                    intent.setPackage("com.example.besalarm");
+                    context.sendBroadcast(intent);
+                    return;
+                }
+            }.start();
+        }
+        // cập nhật đồng hồ
+        Intent intent = new Intent("com.example.besalarm.action.GOT_NEW_ALARM");
+        intent.setPackage("com.example.besalarm");
+        context.sendBroadcast(intent);
+        return;
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void recieverSendNotify(Context context){
+    private void recieverSendNotify(Context context,Intent intent){
+        String AlarmTitle = "Đã đến giờ " + intent.getStringExtra("AlarmTitle") + "!!!";
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
         Notification notification = new NotificationCompat.Builder(context,App.CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.alarm)
-                .setContentTitle("From besalarm")
-                .setContentText("Là ok nếu mày thấy tin này!")
+                .setContentTitle(intent.getStringExtra("HOUR"))
+                .setContentText(AlarmTitle)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .build();
@@ -47,7 +69,7 @@ public class AlertBrdcstReciever extends BroadcastReceiver {
         }
         final Ringtone ringtone = RingtoneManager.getRingtone(context,uri);
         ringtone.play();
-        CountDownTimer countDownTimer = new CountDownTimer(11000,10000) {
+        CountDownTimer countDownTimer = new CountDownTimer(15000,15000) {
             @Override
             public void onTick(long millisUntilFinished){}
             @Override

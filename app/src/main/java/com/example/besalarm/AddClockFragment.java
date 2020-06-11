@@ -34,9 +34,7 @@ public class AddClockFragment extends Fragment {
 
         timePicker = ((TimePicker)view.findViewById(R.id.add_clock_time_picker));
         timePicker.setIs24HourView(true);
-        timePicker.setHour(0);
-        timePicker.setMinute(0);
-
+        //lấy data và thêm đồng hồ vào SQL
         ((Button)view.findViewById(R.id.add_add_clock_btn)).setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -103,65 +101,57 @@ public class AddClockFragment extends Fragment {
 //                Log.e(TAG, "onClick: " + MainActivity.fullSimpleDateFormat.format(calendar.getTime()));
 
                 MainActivity.database.queryData("INSERT INTO "+DATABASE.NAME_TABLE+" VALUES( "+stringResult+" )");
-                MainActivity.showDetailAlarmInDatabase(getContext());
-
                 MainActivity.mfragmentManager.popBackStack();
                 //
-
-
             }
         });
         return view;
     }
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        Log.e(TAG, "onAttach: ");
-    }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.e(TAG, "onCreate: ");
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.e(TAG, "onActivityCreated: ");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.e(TAG, "onStart: " );
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.e(TAG, "onStop: " );
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.e(TAG, "onResume: ");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.e(TAG, "onPause: " );
-    }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.e(TAG, "onDestroyView: ");
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.e(TAG, "onDestroy: ");
-    }
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//        Log.e(TAG, "onAttach: ");
+//    }
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        Log.e(TAG, "onCreate: ");
+//    }
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        Log.e(TAG, "onActivityCreated: ");
+//    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        Log.e(TAG, "onStart: " );
+//    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        Log.e(TAG, "onStop: " );
+//    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        Log.e(TAG, "onResume: ");
+//    }
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        Log.e(TAG, "onPause: " );
+//    }
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        Log.e(TAG, "onDestroyView: ");
+//    }
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        Log.e(TAG, "onDestroy: ");
+//    }
 }

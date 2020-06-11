@@ -33,67 +33,65 @@ public class MainContentFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e(TAG, "onCreateView: " + (MainActivity.mAlarmAdapter == null));
+        Log.e(TAG, "onCreateView: ");
         View fragment = inflater.inflate(R.layout.fragment_main_content,container,false);
 
+        // nhận sự thay đổi của báo thức bao gồm thêm, xóa, cập nhật đồng hồ
+        //reset lại view sau mỗi lần bị onDestroyView
         listView = (ListView) fragment.findViewById(R.id.mainfrag_alarm_lst);
         MainActivity.resetList();
         listView.setAdapter(MainActivity.mAlarmAdapter);
-
+        // check đồng hồ và gửi intent mỗi khi ứng dụng khởi động lại
         Intent intent = new Intent("com.example.besalarm.action.GOT_NEW_ALARM");
         intent.setPackage("com.example.besalarm");
-//        getContext().sendBroadcast(intent);
-        // sau 10s reciever phải dc nhận dù app có bị kill hay không!
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(),-1,intent,0 );
-        AlarmManager alarmManager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis()+10000,pendingIntent);
+        getContext().sendBroadcast(intent);
 
         return fragment;
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        Log.e(TAG, "onAttach: ");
-    }
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.e(TAG, "onCreate: ");
-    }
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.e(TAG, "onActivityCreated: ");
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.e(TAG, "onStart: " );
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.e(TAG, "onStop: " );
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.e(TAG, "onResume: ");
-    }
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.e(TAG, "onPause: " );
-    }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.e(TAG, "onDestroyView: ");
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.e(TAG, "onDestroy: ");
-    }
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//        Log.e(TAG, "onAttach: ");
+//    }
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        Log.e(TAG, "onCreate: ");
+//    }
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        Log.e(TAG, "onActivityCreated: ");
+//    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        Log.e(TAG, "onStart: " );
+//    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        Log.e(TAG, "onStop: " );
+//    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        Log.e(TAG, "onResume: ");
+//    }
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        Log.e(TAG, "onPause: " );
+//    }
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        Log.e(TAG, "onDestroyView: ");
+//    }
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        Log.e(TAG, "onDestroy: ");
+//    }
 }

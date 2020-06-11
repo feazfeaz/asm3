@@ -1,6 +1,8 @@
 package com.example.besalarm;
 
+import android.app.AlarmManager;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +13,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.FragmentTransaction;
+
 import java.util.ArrayList;
 
 public class AlarmAdapter extends BaseAdapter {
+    public static final String TAG = AlarmManager.class.getSimpleName();
 
     private MainActivity mainActivity;
     private ArrayList<Clock> clocks;
@@ -42,10 +47,19 @@ public class AlarmAdapter extends BaseAdapter {
     public View getView(final int i, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = mainActivity.getLayoutInflater();
         convertView = layoutInflater.inflate(R.layout.alarm_adapter_view,null);
+        // nếu nhấp vào đồng hồ sẻ hiện ra màn hình thay đổi
+        LinearLayout alarm_adapter_lineanr = (LinearLayout)convertView.findViewById(R.id.alarm_adapter_lineanr);
+        alarm_adapter_lineanr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.getIntoUpdateFragment(clocks.get(i),i);
+            }
+        });
 
-        setViewValue(i,convertView);
+        setViewValue(i,alarm_adapter_lineanr);
 
-        Switch adapter_active_swtch = (Switch)convertView.findViewById(R.id.adapter_active_swtch);
+        // nếu tắt active => cập nhật sql
+        Switch adapter_active_swtch = (Switch)alarm_adapter_lineanr.findViewById(R.id.adapter_active_swtch);
         adapter_active_swtch.setChecked(clocks.get(i).getActive());
         adapter_active_swtch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -59,14 +73,16 @@ public class AlarmAdapter extends BaseAdapter {
             }
         });
 
-        return (LinearLayout)convertView.findViewById(R.id.alarm_adapter_lineanr);
-    }
-    private void setViewValue(int i, View convertView){
 
+        return alarm_adapter_lineanr;
+    }
+
+    private void setViewValue(int i, View convertView){
+        // thể hiện thời gian báo thức
         ((TextView)convertView.findViewById(R.id.adapter_name_alarm_txt)).setText(clocks.get(i).getName());
         ((TextView)convertView.findViewById(R.id.adapter_showtime_alarm_txt)).setText(
                 MainActivity.sortSimpleDateFormat.format(clocks.get(i).getCalendar().getTime()));
-
+        // nếu ngày trong tuần được active nó sẻ có màu xanh
         if(clocks.get(i).getActiveDayOfWeek(Clock.MONDAY) == true){
             ((TextView)convertView.findViewById(R.id.adapter_2_txt)).setTextColor(mainActivity.getResources().getColor(R.color.color_simple_theme));
         }else{
@@ -104,6 +120,7 @@ public class AlarmAdapter extends BaseAdapter {
         }
 
     }
+
 
 
     //

@@ -10,16 +10,16 @@
     // name of clock
 
     <EditText
-        android:id="@+id/add_title_clock_edt"
+        android:id="@+id/update_title_clock_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/name_alarm"
         android:textAlignment="center"
-        android:layout_marginTop="@dimen/extra_space"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/extra_space"/>
     // time to alarm
     <TimePicker
-        android:id="@+id/add_clock_time_picker"
+        android:id="@+id/update_clock_time_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"/>
@@ -33,7 +33,7 @@
         android:weightSum="3">
         //mon to sat
         <ToggleButton
-            android:id="@+id/add_monday_tggbtn"
+            android:id="@+id/update_monday_tggbtn"
             android:layout_marginHorizontal="@dimen/medium_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:textOff="@string/monday"
             android:checked="true"/>
         <ToggleButton
-            android:id="@+id/add_tuestday_tggbtn"
+            android:id="@+id/update_tuestday_tggbtn"
             android:layout_marginHorizontal="@dimen/medium_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:textOff="@string/tuestday"
             android:checked="true"/>
         <ToggleButton
-            android:id="@+id/add_wednesday_tggbtn"
+            android:id="@+id/update_wednesday_tggbtn"
             android:layout_marginHorizontal="@dimen/medium_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         android:weightSum="3">
         //5-7
         <ToggleButton
-            android:id="@+id/add_thursday_tggbtn"
+            android:id="@+id/update_thursday_tggbtn"
             android:layout_marginHorizontal="@dimen/medium_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             android:textOff="@string/thursday"
             android:checked="true"/>
         <ToggleButton
-            android:id="@+id/add_friday_tggbtn"
+            android:id="@+id/update_friday_tggbtn"
             android:layout_marginHorizontal="@dimen/medium_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:textOff="@string/friday"
             android:checked="true"/>
         <ToggleButton
-            android:id="@+id/add_saturday_tggbtn"
+            android:id="@+id/update_saturday_tggbtn"
             android:layout_marginHorizontal="@dimen/medium_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
         android:orientation="vertical">
         //sun
         <ToggleButton
-            android:id="@+id/add_sunday_tggbtn"
+            android:id="@+id/update_sunday_tggbtn"
             android:layout_marginHorizontal="@dimen/medium_space"
             android:layout_width="@dimen/box"
             android:layout_height="match_parent"
@@ -113,17 +113,36 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="2"
         android:layout_marginTop="@dimen/extra_space">
-        <Button
-            android:background="@drawable/alarm_addd"
-            android:id="@+id/add_add_clock_btn"
+        <TextView
+            android:id="@+id/update_remove_clock_text"
             android:layout_width="@dimen/icon"
             android:layout_height="@dimen/icon"
             android:layout_marginLeft="@dimen/big_space"
             android:layout_marginRight="@dimen/big_space"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:text="@string/remove"
+            android:textAlignment="center"
+            android:textStyle="italic|bold"
+            android:textColor="@color/color_simple_theme"
+            android:textSize="@dimen/big_text"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/update_update_clock_text"
+            android:layout_width="@dimen/icon"
+            android:layout_height="@dimen/icon"
+            android:layout_marginLeft="@dimen/big_space"
+            android:layout_marginRight="@dimen/big_space"
+            android:layout_gravity="center"
+            android:text="@string/update"
+            android:textAlignment="center"
+            android:textStyle="italic|bold"
+            android:textColor="@color/color_simple_theme"
+            android:textSize="@dimen/big_text"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 

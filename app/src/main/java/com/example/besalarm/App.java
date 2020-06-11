@@ -12,7 +12,7 @@ public class App extends Application {
         super.onCreate();
         creatNewNotificationChannel();
     }
-
+    // tạo kênh thông báo cho app
     private void creatNewNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel alarmChannel = new NotificationChannel(
