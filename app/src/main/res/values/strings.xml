@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BesAlarm</string>
+    <string name="monday_of_week">2</string>
+    <string name="tuestday_of_week">3</string>
+    <string name="wednesday_of_week">4</string>
+    <string name="thursday_of_week">5</string>
+    <string name="friday_of_week">6</string>
+    <string name="saturday_of_week">7</string>
+    <string name="sunday_of_week">S</string>
+    
+    <string name="name_alarm">Title Alarm</string>
+    <string name="monday">Monday</string>
+    <string name="tuestday">Tuestday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+
+    <string name="add">Add Alarm</string>
+    <string name="remove">Remove</string>
+</resources>

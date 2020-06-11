@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/small_space">
+
+    // name of clock
+
+    <EditText
+        android:id="@+id/add_title_clock_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_alarm"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
+    // time to alarm
+    <TimePicker
+        android:id="@+id/add_clock_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"/>
+
+    //date toggle choose
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        //mon to sat
+        <ToggleButton
+            android:id="@+id/add_monday_tggbtn"
+            android:layout_marginHorizontal="@dimen/medium_space"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="@string/monday"
+            android:textOff="@string/monday"
+            android:checked="true"/>
+        <ToggleButton
+            android:id="@+id/add_tuestday_tggbtn"
+            android:layout_marginHorizontal="@dimen/medium_space"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="@string/tuestday"
+            android:textOff="@string/tuestday"
+            android:checked="true"/>
+        <ToggleButton
+            android:id="@+id/add_wednesday_tggbtn"
+            android:layout_marginHorizontal="@dimen/medium_space"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="@string/wednesday"
+            android:textOff="@string/wednesday"
+            android:checked="true"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        //5-7
+        <ToggleButton
+            android:id="@+id/add_thursday_tggbtn"
+            android:layout_marginHorizontal="@dimen/medium_space"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="@string/thursday"
+            android:textOff="@string/thursday"
+            android:checked="true"/>
+        <ToggleButton
+            android:id="@+id/add_friday_tggbtn"
+            android:layout_marginHorizontal="@dimen/medium_space"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="@string/friday"
+            android:textOff="@string/friday"
+            android:checked="true"/>
+        <ToggleButton
+            android:id="@+id/add_saturday_tggbtn"
+            android:layout_marginHorizontal="@dimen/medium_space"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="@string/saturday"
+            android:textOff="@string/saturday"
+            android:checked="true"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        //sun
+        <ToggleButton
+            android:id="@+id/add_sunday_tggbtn"
+            android:layout_marginHorizontal="@dimen/medium_space"
+            android:layout_width="@dimen/box"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textOn="@string/sunday"
+            android:textOff="@string/sunday"
+            android:checked="true"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:background="@drawable/alarm_addd"
+            android:id="@+id/add_add_clock_btn"
+            android:layout_width="@dimen/icon"
+            android:layout_height="@dimen/icon"
+            android:layout_marginLeft="@dimen/big_space"
+            android:layout_marginRight="@dimen/big_space"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
