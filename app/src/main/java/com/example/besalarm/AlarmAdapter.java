@@ -68,6 +68,10 @@ public class AlarmAdapter extends BaseAdapter {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     MainActivity.database.queryData("UPDATE "+DATABASE.NAME_TABLE+" SET isActive = '"+1+"' WHERE Id = '"+clocks.get(i).getDatabaseId()+"' ");
+                    Intent intent = new Intent("com.example.besalarm.action.GOT_NEW_ALARM");
+                    intent.setPackage("com.example.besalarm");
+                    mainActivity.sendBroadcast(intent);
+
                 }else {
                     MainActivity.database.queryData("UPDATE "+DATABASE.NAME_TABLE+" SET isActive = '"+0+"' WHERE Id = '"+clocks.get(i).getDatabaseId()+"' ");
                     Intent intent = new Intent("com.example.besalarm.action.WAKE_UP");
